@@ -3,12 +3,10 @@
 ; testing
 F9::
     if WinActive("League of Legends")
-        WinGet, active_id, PID, "League of Legends"
-        ; UniqueID := WinGet("League of Legends")
-        Msgbox, %active_id%
-
-        WinGetPos, X, Y, Width, Height, active_id
-        Msgbox, "League of Legends is at" %X%"`,"%Y%
+        UniqueID := WinActive("League of Legends")
+        Msgbox %UniqueID%
+        WinGetPos, X, Y, Width, Height, ahk_id %UniqueID%
+        Msgbox, League of Legends is at %X%`,%Y%
 
 ; start program
 F10::
