@@ -9,13 +9,6 @@
 
     ; order: play button => tft logo
     myPostions := [[3, 1],[20, 6]]
-    
-    LeaguePlayX := 3
-    LeaguePlayY := 1
-    
-    LeagueSelectTftX := 20
-    LeagueSelectTftY := 6
-
 
 DetectHiddenWindows, On
 ; start program
@@ -34,24 +27,12 @@ StartQueue(X, Y, Width, Height, UniqueID){
     SetControlDelay -1 ;instantly run all commands, code wont break if click is held down
     
     ; click buttons to queue up
-    ; For value in myPostions    
-        playButtonX := Width * (LeaguePlayX/LeagueWidth)
-        playButtonY := Height * (LeaguePlayY/LeagueHeight)
-
-        ;testing
-        ; Msgbox, "Target" %playButtonX% "," %playButtonY% 
-
+    For key, value in myPostions{
+        playButtonX := Width * (value[1]/LeagueWidth)
+        playButtonY := Height * (value[2]/LeagueHeight)
         clickLeague(playButtonX, playButtonY, UniqueID)
         Sleep, 500
-
-    ;choose tft in gamemode
-        selectTftX := Width * (LeagueSelectTftX/LeagueWidth)
-        selectTftY := Height * (LeagueSelectTftY/LeagueHeight)
-        ; Msgbox, "Target" %selectTftX% "," %selectTftY% 
-        clickLeague(selectTftX, selectTftY, UniqueID)
-
-
-
+    }
     
 
 }
