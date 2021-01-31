@@ -14,5 +14,7 @@ Goals:
         wait for lobby
         play again
         
+Goal:
+    A low overhead script that will run TFT in the background untill script exits
 
 Notes:

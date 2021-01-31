@@ -3,19 +3,24 @@
 ; After running this script, right click the tray icon and click Exit to test the OnExit callback function.
 #Persistent  ; Prevent the script from exiting automatically.
 SetTitleMatchMode 2
-DetectHiddenWindows, On
+DetectHiddenWindows On
 
 ; Register a function to be called on exit:
 OnExit("ExitFunc")
 
-ExitFunc(ExitReason, ExitCode)
-{
+myHidden := []
+ExitFunc(ExitReason, ExitCode){
+    global
     if ExitReason not in Logoff,Shutdown
     {
         MsgBox, 4, , Are you sure you want to exit?
         IfMsgBox, No
             return 1  ; OnExit functions must return non-zero to prevent exit.
     }
+    Loop, %myHidden%{
+
+    }
+
     ; Do not call ExitApp -- that would prevent other OnExit functions from being called.
 }
 ;dimentions used to find the buttons on the league client in cm 
@@ -29,44 +34,6 @@ QueueButtons := [[3, 1, 500],[20, 6, 1000], [14, 18.5, 3000], [14, 18.5, 3000]]
 
 
 ; start program
-
-; testing Show + Hide
-Run, notepad.exe
-WinWait, Untitled - Notepad, , 3
-if ErrorLevel
-{
-    MsgBox, WinWait timed out.
-    return
-}
-else{
-    Msgbox "go" ;
-    UniqueID := WinExist("Untitled - Notepad")   
-
-}
-
-
-F1::
-    Suspend
-    return
-
-
-deBugToggleShow = True
-A::
-    if deBugToggleShow{
-        Msgbox % deBugToggleShow UniqueID
-        WinHide ahk_id %UniqueID%
-        deBugToggleShow = False    
-    }
-    else{
-        Msgbox % deBugToggleShow UniqueID
-        WinShow ahk_id %UniqueID%
-        deBugToggleShow = True
-    }
-    return
-
-B::
-    WinKill, ahk_id %UniqueID%
-    return
 
 
 F10::

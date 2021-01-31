@@ -7,10 +7,10 @@ Loop, %All%
     ID := All%A_Index%
     Loop, %NotHidden%
         If (ID = NotHidden%A_Index%)
-            ID =
-    IF !ID
-        Continue
-    Hidden++
-    Hidden%Hidden% := ID
+            ID = ; turn id = 0
+        IF !ID ;if 0, 
+            Continue
+        Hidden++
+        Hidden%Hidden% := ID
 }
 MsgBox,%  "Number of windows:`nAll: " All "`nHidden: " Hidden "`nNotHidden: " NotHidden
