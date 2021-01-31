@@ -14,6 +14,10 @@
 
 DetectHiddenWindows, On
 ; start program
+
+deBugHide = 
+F9:
+
 F10::
 if WinExist("League of Legends")
     UniqueID := WinExist("League of Legends")
